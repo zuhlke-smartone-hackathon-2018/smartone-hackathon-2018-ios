@@ -14,10 +14,17 @@ class VoiceRecordingInteractor: VoiceRecordingInteractorProtocol {
 
     var speechWorker: SpeechWorkerProtocol?
 
+    var chatWorker: ChatWorkerProtocol?
+
     func record() {
         self.presenter?.presentIsRecording(true)
         self.speechWorker?.recognizeSpeech { (text: String?, error: SpeechRecognitionError?) in
             if let text = text {
+                self.chatWorker?.sendMessage(text) { chatError in
+                    if let chatError = chatError {
+                        self.presenter?.presentError(chatError.localizedDescription)
+                    }
+                }
                 self.presenter?.presentText(text)
             } else if let errorMessage = error?.errorReason {
                 self.presenter?.presentError(errorMessage)

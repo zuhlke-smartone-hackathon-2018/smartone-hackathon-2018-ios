@@ -26,6 +26,8 @@ protocol VoiceRecordingInteractorProtocol: class {
 
     var speechWorker: SpeechWorkerProtocol? { get set }
 
+    var chatWorker: ChatWorkerProtocol? { get set }
+
     func record()
 
 }

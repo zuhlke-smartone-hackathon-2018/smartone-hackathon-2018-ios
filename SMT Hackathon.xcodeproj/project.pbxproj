@@ -17,6 +17,8 @@
 		9FC99993217B1EF700D087FC /* MicrosoftCognitiveServicesSpeech.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC99990217B1EED00D087FC /* MicrosoftCognitiveServicesSpeech.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9FC9999B217B29BF00D087FC /* SpeechWorkerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9999A217B29BF00D087FC /* SpeechWorkerProtocols.swift */; };
 		9FC9999D217B354900D087FC /* VoiceRecordingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FC9999C217B354900D087FC /* VoiceRecordingViewController.xib */; };
+		9FC999A4217B52AF00D087FC /* ChatWorkerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC999A3217B52AF00D087FC /* ChatWorkerProtocols.swift */; };
+		9FC999A6217B536500D087FC /* ChatWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC999A5217B536500D087FC /* ChatWorker.swift */; };
 		9FD46078217B0FE700C646DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD46077217B0FE700C646DB /* AppDelegate.swift */; };
 		9FD4607A217B0FE700C646DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD46079217B0FE700C646DB /* ViewController.swift */; };
 		9FD4607D217B0FE700C646DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FD4607B217B0FE700C646DB /* Main.storyboard */; };
@@ -49,6 +51,8 @@
 		9FC99999217B1F7B00D087FC /* SMTHackathon-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SMTHackathon-Bridging-Header.h"; sourceTree = "<group>"; };
 		9FC9999A217B29BF00D087FC /* SpeechWorkerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechWorkerProtocols.swift; sourceTree = "<group>"; };
 		9FC9999C217B354900D087FC /* VoiceRecordingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VoiceRecordingViewController.xib; sourceTree = "<group>"; };
+		9FC999A3217B52AF00D087FC /* ChatWorkerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatWorkerProtocols.swift; sourceTree = "<group>"; };
+		9FC999A5217B536500D087FC /* ChatWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatWorker.swift; sourceTree = "<group>"; };
 		9FD46074217B0FE700C646DB /* SMT Hackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SMT Hackathon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FD46077217B0FE700C646DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FD46079217B0FE700C646DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 		9FC9998B217B1A0E00D087FC /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				9FC999A1217B525E00D087FC /* ChatWorker */,
 				9FC9998C217B1A1C00D087FC /* SpeechWorker */,
 			);
 			path = Workers;
@@ -138,6 +143,15 @@
 				9FC99990217B1EED00D087FC /* MicrosoftCognitiveServicesSpeech.framework */,
 			);
 			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		9FC999A1217B525E00D087FC /* ChatWorker */ = {
+			isa = PBXGroup;
+			children = (
+				9FC999A5217B536500D087FC /* ChatWorker.swift */,
+				9FC999A3217B52AF00D087FC /* ChatWorkerProtocols.swift */,
+			);
+			path = ChatWorker;
 			sourceTree = "<group>";
 		};
 		9FD4606B217B0FE700C646DB = {
@@ -255,7 +269,9 @@
 				9FC9999B217B29BF00D087FC /* SpeechWorkerProtocols.swift in Sources */,
 				9FC9997F217B16EF00D087FC /* VoiceRecordingProtocols.swift in Sources */,
 				9FC99984217B189F00D087FC /* VoiceRecordingViewController.swift in Sources */,
+				9FC999A6217B536500D087FC /* ChatWorker.swift in Sources */,
 				9FC99987217B18FA00D087FC /* VoiceRecordingPresenter.swift in Sources */,
+				9FC999A4217B52AF00D087FC /* ChatWorkerProtocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,7 +429,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = hk.kev.smt.hackathon2018;
+				PRODUCT_BUNDLE_IDENTIFIER = hk.kev.smt.hackathon2018.speaker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SMT Hackathon/SMTHackathon-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -438,7 +454,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = hk.kev.smt.hackathon2018;
+				PRODUCT_BUNDLE_IDENTIFIER = hk.kev.smt.hackathon2018.speaker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SMT Hackathon/SMTHackathon-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;

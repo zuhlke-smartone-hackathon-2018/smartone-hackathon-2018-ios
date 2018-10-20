@@ -17,6 +17,7 @@ class VoiceRecordingConfigurator {
         view.interactor = interactor
         interactor.presenter = presenter
         interactor.speechWorker = SpeechWorker()
+        interactor.chatWorker = ChatWorker()
         presenter.view = view
         return view
     }

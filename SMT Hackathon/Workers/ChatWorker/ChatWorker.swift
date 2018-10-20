@@ -47,13 +47,11 @@ class ChatWorker: ChatWorkerProtocol {
 
     private var othersMessages: [String] = [] {
         didSet {
-            guard self.othersMessages.count > oldValue.count else {
+            guard oldValue != self.othersMessages else {
                 return
             }
-            let oldCount = oldValue.count
-            let newMessages = [self.othersMessages.last ?? ""] //self.othersMessages.suffix(from: oldCount)
             self.setEarSepeakerOn()
-            let textToVoice = newMessages.joined(separator: ",")
+            let textToVoice = self.othersMessages.last ?? ""
             let utterance = AVSpeechUtterance(string: textToVoice)
             utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
             let synth = AVSpeechSynthesizer()
@@ -99,6 +97,7 @@ class ChatWorker: ChatWorkerProtocol {
             }
 
             self.othersMessages = activitySet.activities.sorted(by: { $0.id < $1.id }).filter { $0.from.id != self.user }.compactMap { $0.text }
+            completion(true)
         }
     }
 

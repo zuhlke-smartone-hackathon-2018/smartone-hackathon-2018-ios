@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9FC9997F217B16EF00D087FC /* VoiceRecordingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9997E217B16EF00D087FC /* VoiceRecordingProtocols.swift */; };
+		9FC99981217B184D00D087FC /* VoiceRecordingConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC99980217B184D00D087FC /* VoiceRecordingConfigurator.swift */; };
+		9FC99984217B189F00D087FC /* VoiceRecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC99983217B189F00D087FC /* VoiceRecordingViewController.swift */; };
+		9FC99987217B18FA00D087FC /* VoiceRecordingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC99986217B18FA00D087FC /* VoiceRecordingPresenter.swift */; };
+		9FC9998A217B193C00D087FC /* VoiceRecordingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC99989217B193C00D087FC /* VoiceRecordingInteractor.swift */; };
+		9FC9998E217B1A3300D087FC /* SpeechWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9998D217B1A3300D087FC /* SpeechWorker.swift */; };
+		9FC99991217B1EED00D087FC /* MicrosoftCognitiveServicesSpeech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC99990217B1EED00D087FC /* MicrosoftCognitiveServicesSpeech.framework */; };
+		9FC99993217B1EF700D087FC /* MicrosoftCognitiveServicesSpeech.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC99990217B1EED00D087FC /* MicrosoftCognitiveServicesSpeech.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9FC9999B217B29BF00D087FC /* SpeechWorkerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9999A217B29BF00D087FC /* SpeechWorkerProtocols.swift */; };
+		9FC9999D217B354900D087FC /* VoiceRecordingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FC9999C217B354900D087FC /* VoiceRecordingViewController.xib */; };
 		9FD46078217B0FE700C646DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD46077217B0FE700C646DB /* AppDelegate.swift */; };
 		9FD4607A217B0FE700C646DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD46079217B0FE700C646DB /* ViewController.swift */; };
 		9FD4607D217B0FE700C646DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FD4607B217B0FE700C646DB /* Main.storyboard */; };
@@ -14,7 +24,31 @@
 		9FD46082217B0FE800C646DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FD46080217B0FE800C646DB /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		9FC99994217B1EF700D087FC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9FC99993217B1EF700D087FC /* MicrosoftCognitiveServicesSpeech.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		9FC9997E217B16EF00D087FC /* VoiceRecordingProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecordingProtocols.swift; sourceTree = "<group>"; };
+		9FC99980217B184D00D087FC /* VoiceRecordingConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecordingConfigurator.swift; sourceTree = "<group>"; };
+		9FC99983217B189F00D087FC /* VoiceRecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecordingViewController.swift; sourceTree = "<group>"; };
+		9FC99986217B18FA00D087FC /* VoiceRecordingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecordingPresenter.swift; sourceTree = "<group>"; };
+		9FC99989217B193C00D087FC /* VoiceRecordingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecordingInteractor.swift; sourceTree = "<group>"; };
+		9FC9998D217B1A3300D087FC /* SpeechWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechWorker.swift; sourceTree = "<group>"; };
+		9FC99990217B1EED00D087FC /* MicrosoftCognitiveServicesSpeech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MicrosoftCognitiveServicesSpeech.framework; sourceTree = "<group>"; };
+		9FC99999217B1F7B00D087FC /* SMTHackathon-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SMTHackathon-Bridging-Header.h"; sourceTree = "<group>"; };
+		9FC9999A217B29BF00D087FC /* SpeechWorkerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechWorkerProtocols.swift; sourceTree = "<group>"; };
+		9FC9999C217B354900D087FC /* VoiceRecordingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VoiceRecordingViewController.xib; sourceTree = "<group>"; };
 		9FD46074217B0FE700C646DB /* SMT Hackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SMT Hackathon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FD46077217B0FE700C646DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FD46079217B0FE700C646DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,16 +63,88 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FC99991217B1EED00D087FC /* MicrosoftCognitiveServicesSpeech.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9FC9997C217B166200D087FC /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				9FC9997D217B16D400D087FC /* VoiceRecording */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		9FC9997D217B16D400D087FC /* VoiceRecording */ = {
+			isa = PBXGroup;
+			children = (
+				9FC99988217B191E00D087FC /* Interactor */,
+				9FC99985217B18E500D087FC /* Presenter */,
+				9FC99982217B189200D087FC /* View */,
+				9FC9997E217B16EF00D087FC /* VoiceRecordingProtocols.swift */,
+				9FC99980217B184D00D087FC /* VoiceRecordingConfigurator.swift */,
+			);
+			path = VoiceRecording;
+			sourceTree = "<group>";
+		};
+		9FC99982217B189200D087FC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9FC99983217B189F00D087FC /* VoiceRecordingViewController.swift */,
+				9FC9999C217B354900D087FC /* VoiceRecordingViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9FC99985217B18E500D087FC /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				9FC99986217B18FA00D087FC /* VoiceRecordingPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		9FC99988217B191E00D087FC /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				9FC99989217B193C00D087FC /* VoiceRecordingInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		9FC9998B217B1A0E00D087FC /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				9FC9998C217B1A1C00D087FC /* SpeechWorker */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
+		9FC9998C217B1A1C00D087FC /* SpeechWorker */ = {
+			isa = PBXGroup;
+			children = (
+				9FC9998D217B1A3300D087FC /* SpeechWorker.swift */,
+				9FC9999A217B29BF00D087FC /* SpeechWorkerProtocols.swift */,
+			);
+			path = SpeechWorker;
+			sourceTree = "<group>";
+		};
+		9FC9998F217B1EED00D087FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9FC99990217B1EED00D087FC /* MicrosoftCognitiveServicesSpeech.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 		9FD4606B217B0FE700C646DB = {
 			isa = PBXGroup;
 			children = (
 				9FD46076217B0FE700C646DB /* SMT Hackathon */,
+				9FC9998F217B1EED00D087FC /* Frameworks */,
 				9FD46075217B0FE700C646DB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +160,9 @@
 		9FD46076217B0FE700C646DB /* SMT Hackathon */ = {
 			isa = PBXGroup;
 			children = (
+				9FC99999217B1F7B00D087FC /* SMTHackathon-Bridging-Header.h */,
+				9FC9998B217B1A0E00D087FC /* Workers */,
+				9FC9997C217B166200D087FC /* Scenes */,
 				9FD46077217B0FE700C646DB /* AppDelegate.swift */,
 				9FD46079217B0FE700C646DB /* ViewController.swift */,
 				9FD4607B217B0FE700C646DB /* Main.storyboard */,
@@ -74,6 +183,7 @@
 				9FD46070217B0FE700C646DB /* Sources */,
 				9FD46071217B0FE700C646DB /* Frameworks */,
 				9FD46072217B0FE700C646DB /* Resources */,
+				9FC99994217B1EF700D087FC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -96,6 +206,7 @@
 				TargetAttributes = {
 					9FD46073217B0FE700C646DB = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -124,6 +235,7 @@
 			files = (
 				9FD46082217B0FE800C646DB /* LaunchScreen.storyboard in Resources */,
 				9FD4607F217B0FE800C646DB /* Assets.xcassets in Resources */,
+				9FC9999D217B354900D087FC /* VoiceRecordingViewController.xib in Resources */,
 				9FD4607D217B0FE700C646DB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,8 +247,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FC9998E217B1A3300D087FC /* SpeechWorker.swift in Sources */,
 				9FD4607A217B0FE700C646DB /* ViewController.swift in Sources */,
 				9FD46078217B0FE700C646DB /* AppDelegate.swift in Sources */,
+				9FC99981217B184D00D087FC /* VoiceRecordingConfigurator.swift in Sources */,
+				9FC9998A217B193C00D087FC /* VoiceRecordingInteractor.swift in Sources */,
+				9FC9999B217B29BF00D087FC /* SpeechWorkerProtocols.swift in Sources */,
+				9FC9997F217B16EF00D087FC /* VoiceRecordingProtocols.swift in Sources */,
+				9FC99984217B189F00D087FC /* VoiceRecordingViewController.swift in Sources */,
+				9FC99987217B18FA00D087FC /* VoiceRecordingPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,14 +401,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GQT83GGM9E;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = "SMT Hackathon/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "hk.com.zuhlke.SMT-Hackathon";
+				PRODUCT_BUNDLE_IDENTIFIER = hk.kev.smt.hackathon2018;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SMT Hackathon/SMTHackathon-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -299,14 +426,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GQT83GGM9E;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = "SMT Hackathon/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "hk.com.zuhlke.SMT-Hackathon";
+				PRODUCT_BUNDLE_IDENTIFIER = hk.kev.smt.hackathon2018;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SMT Hackathon/SMTHackathon-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -112,18 +112,9 @@ class ChatWorker: ChatWorkerProtocol {
 
     private func setEarSepeakerOn()
     {
-        do {
-            try AVAudioSession.sharedInstance().setMode(.spokenAudio)
-        } catch _ {
-        }
-        do {
-            try AVAudioSession.sharedInstance().setActive(true)
-        } catch _ {
-        }
-        do {
-            try AVAudioSession.sharedInstance().overrideOutputAudioPort(.speaker)
-        } catch _ {
-        }
+        try? AVAudioSession.sharedInstance().setMode(.spokenAudio)
+        try? AVAudioSession.sharedInstance().setActive(true)
+        try? AVAudioSession.sharedInstance().overrideOutputAudioPort(.speaker)
     }
 
 }
@@ -145,7 +136,6 @@ extension ChatWorker {
                 let data = data,
                 let conversation = try? JSONDecoder().decode(Conversation.self, from: data)
                 else {
-                    NSLog("[Error] Fail to create conversation")
                     completion(nil)
                     return
             }
@@ -174,7 +164,6 @@ extension ChatWorker {
                 let data = data,
                 let response = try? JSONDecoder().decode(PostActivityResponse.self, from: data)
                 else {
-                    NSLog("[Error] Fail to create activity")
                     completion(nil)
                     return
             }
@@ -198,11 +187,9 @@ extension ChatWorker {
                 let data = data,
                 let response = try? JSONDecoder().decode(ActivitySet.self, from: data)
                 else {
-                    NSLog("[Error] Fail to get activities")
                     completion(nil)
                     return
             }
-            NSLog("[getMessage Response]: \(response.activities.flatMap({ $0.text} ))")
             completion(response)
         }
         dataTask.resume()

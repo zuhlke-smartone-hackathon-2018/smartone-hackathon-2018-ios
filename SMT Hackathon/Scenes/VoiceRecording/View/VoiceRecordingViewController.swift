@@ -15,29 +15,32 @@ class VoiceRecordingViewController: UIViewController, VoiceRecordingViewProtocol
     func showIsRecording(_ isRecording: Bool) {
         self.button?.isEnabled = !isRecording
         if isRecording {
-            self.spinner?.startAnimating()
-        } else {
-            self.spinner?.stopAnimating()
-        }
+            self.textLabel.text = "Listening..."
+            self.buildingLabel.text = ""
+        }         
     }
 
     func showResult(with text: String) {
-        self.textLabel?.text = text
+        self.textLabel.text = text
+    }
+
+    func showBuildingText(_ text: String) {
+        self.buildingLabel.text = text
     }
 
     func showError(with message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel))
         self.present(alert, animated: true, completion: nil)
+        self.buildingLabel.text = ""
     }
 
     // MARK: Internal implementation
 
-    @IBOutlet private var textLabel: UILabel?
+    @IBOutlet private var textLabel: UILabel!
+    @IBOutlet private var buildingLabel: UILabel!
 
     @IBOutlet private var button: UIButton?
-
-    @IBOutlet private var spinner: UIActivityIndicatorView?
 
     convenience init() {
         self.init(nibName: "VoiceRecordingViewController", bundle: nil)

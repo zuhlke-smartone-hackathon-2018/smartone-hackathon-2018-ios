@@ -13,7 +13,7 @@ class VoiceRecordingPresenter: VoiceRecordingPresenterProtocol {
     weak var view: VoiceRecordingViewProtocol?
 
     func presentIsRecording(_ isRecording: Bool) {
-        self.view?.showIsRecording(isRecording)
+        self.view?.showIsRecording(isRecording)        
     }
 
     func presentText(_ text: String) {
@@ -22,6 +22,10 @@ class VoiceRecordingPresenter: VoiceRecordingPresenterProtocol {
 
     func presentError(_ errorMessage: String) {
         self.view?.showError(with: errorMessage)
+    }
+
+    func presentBuildingText(_ text: String) {
+        self.view?.showBuildingText(text)
     }
 
 }

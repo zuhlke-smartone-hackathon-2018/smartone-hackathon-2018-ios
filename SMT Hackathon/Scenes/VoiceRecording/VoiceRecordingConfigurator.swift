@@ -18,6 +18,9 @@ class VoiceRecordingConfigurator {
         interactor.presenter = presenter
         interactor.speechWorker = SpeechWorker()
         interactor.chatWorker = ChatWorker()
+        if let chatWorker = interactor.chatWorker {
+            chatWorker.delegate = interactor
+        }
         presenter.view = view
         return view
     }

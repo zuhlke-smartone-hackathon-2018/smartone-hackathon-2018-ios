@@ -9,7 +9,7 @@
 import Foundation
 import AVFoundation
 
-private let BotServiceSecret = "Gpj9YxxEclo.cwA.eP8.plEZ1adsvuMWkYfr8wsx1gNNVrSWaamc2ongP1Lzncg"
+private let BotServiceSecret = "UHk7Q_9H9cs.cwA.lVc.vYP20wKhApiaOAwCa15q4LQLYTx3aJSp458bXAg5Q-4" //"Gpj9YxxEclo.cwA.eP8.plEZ1adsvuMWkYfr8wsx1gNNVrSWaamc2ongP1Lzncg"
 
 class ChatWorker: ChatWorkerProtocol {
 
@@ -27,10 +27,11 @@ class ChatWorker: ChatWorkerProtocol {
                     completion(error as Error)
                     return
                 }
-
+                self.refreshMessage(completion: { _ in })
+                /*
                 DispatchQueue.main.async {
                     self.createTimerIfNecessary()
-                }
+                }*/
 
                 completion(nil)
             })
@@ -49,13 +50,12 @@ class ChatWorker: ChatWorkerProtocol {
         didSet {
             guard oldValue != self.othersMessages else {
                 return
+            }            
+            let lastMessage = self.othersMessages.last ?? ""
+            DispatchQueue.main.async {
+                self.delegate?.chatWorker(self, didReceiveMessage: lastMessage)
+                TTSVocalizer.sharedInstance.vocalize(lastMessage)
             }
-            self.setEarSepeakerOn()
-            let textToVoice = self.othersMessages.last ?? ""
-            let utterance = AVSpeechUtterance(string: textToVoice)
-            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-            let synth = AVSpeechSynthesizer()
-            synth.speak(utterance)
         }
     }
 
@@ -97,6 +97,7 @@ class ChatWorker: ChatWorkerProtocol {
             }
 
             self.othersMessages = activitySet.activities.sorted(by: { $0.id < $1.id }).filter { $0.from.id != self.user }.compactMap { $0.text }
+
             completion(true)
         }
     }
@@ -105,18 +106,10 @@ class ChatWorker: ChatWorkerProtocol {
         guard self.getMessageTimer == nil else {
             return
         }
-        self.getMessageTimer = Timer.scheduledTimer(withTimeInterval: 4.0, repeats: true, block: { _ in
+        self.getMessageTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true, block: { _ in
             self.refreshMessage(completion: { _ in })
         })
     }
-
-    private func setEarSepeakerOn()
-    {
-        try? AVAudioSession.sharedInstance().setMode(.spokenAudio)
-        try? AVAudioSession.sharedInstance().setActive(true)
-        try? AVAudioSession.sharedInstance().overrideOutputAudioPort(.speaker)
-    }
-
 }
 
 extension ChatWorker {

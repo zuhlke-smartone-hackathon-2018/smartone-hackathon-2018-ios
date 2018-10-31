@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,8 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VoiceRecordingViewController" customModule="SMT_Hackathon" customModuleProvider="target">
             <connections>
+                <outlet property="buildingLabel" destination="iLI-cO-Xe8" id="12c-Cd-iTk"/>
                 <outlet property="button" destination="wNx-sO-0Nu" id="WDc-HO-HQi"/>
-                <outlet property="spinner" destination="O6g-ew-5BU" id="zEj-pH-PQ5"/>
                 <outlet property="textLabel" destination="fIu-0w-pDG" id="Jp1-He-47y"/>
                 <outlet property="view" destination="iN0-l3-epB" id="7Xh-rB-lLY"/>
             </connections>
@@ -22,39 +23,61 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIu-0w-pDG">
-                    <rect key="frame" x="16" y="44" width="343" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="O6g-ew-5BU">
-                    <rect key="frame" x="177.5" y="333.5" width="20" height="20"/>
-                </activityIndicatorView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="building" translatesAutoresizingMaskIntoConstraints="NO" id="hPz-OU-jcz">
+                    <rect key="frame" x="0.0" y="20" width="375" height="567"/>
+                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNx-sO-0Nu">
                     <rect key="frame" x="16" y="603" width="343" height="40"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="Owi-R6-kWz"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
+                    <color key="tintColor" red="1" green="0.96987975341817223" blue="0.03189662103562485" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Tap to Speech"/>
                     <connections>
                         <action selector="tapRecord" destination="-1" eventType="touchUpInside" id="FrI-ta-if7"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please tap the button and speech" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIu-0w-pDG">
+                    <rect key="frame" x="16" y="90" width="191" height="88"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="fIu-0w-pDG" secondAttribute="height" multiplier="115:53" id="fCx-C9-giT"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLI-cO-Xe8">
+                    <rect key="frame" x="16" y="229" width="183" height="0.0"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="UV8-QF-Cjz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="O6g-ew-5BU" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Cvz-Mg-1Y1"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fIu-0w-pDG" secondAttribute="trailing" constant="16" id="Ey5-TO-Wgx"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hPz-OU-jcz" secondAttribute="trailing" id="C8J-xd-R3o"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fIu-0w-pDG" secondAttribute="trailing" constant="168" id="Ey5-TO-Wgx"/>
                 <constraint firstItem="fIu-0w-pDG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="GY8-vo-0qK"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="wNx-sO-0Nu" secondAttribute="bottom" constant="24" id="Z5o-eS-Ir7"/>
                 <constraint firstItem="wNx-sO-0Nu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Zt0-ac-gVL"/>
-                <constraint firstItem="O6g-ew-5BU" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="d0R-Py-kT1"/>
+                <constraint firstItem="hPz-OU-jcz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="bFO-0R-se8"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="wNx-sO-0Nu" secondAttribute="trailing" constant="16" id="ecK-iU-lZy"/>
-                <constraint firstItem="fIu-0w-pDG" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="24" id="gln-5L-Ke8"/>
+                <constraint firstItem="iLI-cO-Xe8" firstAttribute="top" secondItem="fIu-0w-pDG" secondAttribute="bottom" constant="51" id="gbz-Uf-PuU"/>
+                <constraint firstItem="wNx-sO-0Nu" firstAttribute="top" secondItem="hPz-OU-jcz" secondAttribute="bottom" constant="16" id="giw-Jq-dyV"/>
+                <constraint firstItem="fIu-0w-pDG" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="70" id="gln-5L-Ke8"/>
+                <constraint firstItem="iLI-cO-Xe8" firstAttribute="leading" secondItem="fIu-0w-pDG" secondAttribute="leading" id="leS-mX-St3"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="hPz-OU-jcz" secondAttribute="top" id="sxF-Lk-keP"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="iLI-cO-Xe8" secondAttribute="trailing" constant="176" id="wPa-Cv-67y"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="138.40000000000001" y="152.47376311844079"/>
+            <point key="canvasLocation" x="135.19999999999999" y="150.67466266866569"/>
         </view>
     </objects>
+    <resources>
+        <image name="building" width="239" height="326"/>
+    </resources>
 </document>

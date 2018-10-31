@@ -8,39 +8,42 @@
 
 import Foundation
 
-class SpeechWorker: SpeechWorkerProtocol {
+final class SpeechWorker: SpeechWorkerProtocol {
+    
+    private let subscription: String
 
-    private let subscription = "2dd02f7891dc401e90c5725e45d89848"
+    private let region: String
 
-    private let region = "eastasia"
+    init() {
+        self.subscription = AzureService.apiKey
+        self.region = AzureService.region
+    }
 
     func recognizeSpeech(completionHandler: @escaping (String?, SpeechRecognitionError?) -> Void) {
-        guard
-            let speechConfig = SPXSpeechConfiguration(subscription: self.subscription, region: self.region),
-            let recognizer = SPXSpeechRecognizer(speechConfig)
-            else {
-                return
-        }
-
-        DispatchQueue(label: "background").async {
-            let result = recognizer.recognizeOnce()
-            DispatchQueue.main.async {
-                switch result.reason {
-                case .recognizedSpeech, .recognizedIntent:
-                    guard let text = result.text else {
-                        break
+        DispatchQueue.global(qos: .userInteractive).async {
+            guard let speechConfig = SPXSpeechConfiguration(subscription: self.subscription, region: self.region),
+                let recognizer = SPXSpeechRecognizer(speechConfig) else {
+                    return
+            }
+            recognizer.recognizeOnceAsync { result in
+                DispatchQueue.main.async {
+                    switch result.reason {
+                    case .recognizedSpeech, .recognizedIntent:
+                        guard let text = result.text else {
+                            break
+                        }
+                        completionHandler(text, nil)
+                    case .canceled:
+                        guard let cancelDetails = SPXCancellationDetails(fromCanceledRecognitionResult: result) else {
+                            break
+                        }
+                        completionHandler(nil, SpeechRecognitionError(errorReason: cancelDetails.errorDetails ?? ""))
+                    default:
+                        guard let noMatchDetails = SPXNoMatchDetails(fromNoMatch: result) else {
+                            break
+                        }
+                        completionHandler(nil, SpeechRecognitionError(errorReason: "No match \(noMatchDetails.reason)"))
                     }
-                    completionHandler(text, nil)
-                case .canceled:
-                    guard let cancelDetails = SPXCancellationDetails(fromCanceledRecognitionResult: result) else {
-                        break
-                    }
-                    completionHandler(nil, SpeechRecognitionError(errorReason: cancelDetails.errorDetails ?? ""))
-                default:
-                    guard let noMatchDetails = SPXNoMatchDetails(fromNoMatch: result) else {
-                        break
-                    }
-                    completionHandler(nil, SpeechRecognitionError(errorReason: "No match \(noMatchDetails.reason)"))
                 }
             }
         }

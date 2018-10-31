@@ -16,6 +16,8 @@ protocol VoiceRecordingViewProtocol: class {
 
     func showResult(with text: String)
 
+    func showBuildingText(_ text: String)
+
     func showError(with message: String)
 
 }
@@ -39,6 +41,8 @@ protocol VoiceRecordingPresenterProtocol: class {
     func presentIsRecording(_ isRecording: Bool)
 
     func presentText(_ text: String)
+
+    func presentBuildingText(_ text: String)
 
     func presentError(_ errorMessage: String)
 }

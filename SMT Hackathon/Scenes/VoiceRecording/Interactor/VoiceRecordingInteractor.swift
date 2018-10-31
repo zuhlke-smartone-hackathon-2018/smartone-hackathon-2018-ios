@@ -26,6 +26,7 @@ class VoiceRecordingInteractor: VoiceRecordingInteractorProtocol {
                     }
                 }
                 self.presenter?.presentText(text)
+                self.presenter?.presentBuildingText("Prcoessing...")
             } else if let errorMessage = error?.errorReason {
                 self.presenter?.presentError(errorMessage)
             }
@@ -33,4 +34,16 @@ class VoiceRecordingInteractor: VoiceRecordingInteractorProtocol {
         }
     }
 
+}
+
+extension VoiceRecordingInteractor: ChatWorkerDelegate {
+    func chatWorker(_ worker: ChatWorkerProtocol, didReceiveMessage: String) {
+        self.presenter?.presentBuildingText(didReceiveMessage)
+    }
+
+    func chatWorkerDidPostMessage() {
+        DispatchQueue.main.async {
+            self.presenter?.presentBuildingText("Processing...")
+        }
+    }
 }

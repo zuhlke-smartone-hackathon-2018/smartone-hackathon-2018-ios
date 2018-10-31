@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B6BA7A42186FD6B00534652 /* AzureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6BA7A32186FD6B00534652 /* AzureService.swift */; };
+		7B6BA7A62186FDFF00534652 /* TTSAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6BA7A52186FDFE00534652 /* TTSAuthentication.swift */; };
+		7B6BA7A82186FEA200534652 /* TTSHttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6BA7A72186FEA200534652 /* TTSHttpRequest.swift */; };
+		7B6BA7AA2187031500534652 /* TTSSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6BA7A92187031500534652 /* TTSSynthesizer.swift */; };
+		7B6BA7AF2187069200534652 /* TTSVocalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6BA7AE2187069200534652 /* TTSVocalizer.swift */; };
 		9FC9997F217B16EF00D087FC /* VoiceRecordingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC9997E217B16EF00D087FC /* VoiceRecordingProtocols.swift */; };
 		9FC99981217B184D00D087FC /* VoiceRecordingConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC99980217B184D00D087FC /* VoiceRecordingConfigurator.swift */; };
 		9FC99984217B189F00D087FC /* VoiceRecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC99983217B189F00D087FC /* VoiceRecordingViewController.swift */; };
@@ -41,6 +46,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7B6BA7A32186FD6B00534652 /* AzureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzureService.swift; sourceTree = "<group>"; };
+		7B6BA7A52186FDFE00534652 /* TTSAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSAuthentication.swift; sourceTree = "<group>"; };
+		7B6BA7A72186FEA200534652 /* TTSHttpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSHttpRequest.swift; sourceTree = "<group>"; };
+		7B6BA7A92187031500534652 /* TTSSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSSynthesizer.swift; sourceTree = "<group>"; };
+		7B6BA7AE2187069200534652 /* TTSVocalizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSVocalizer.swift; sourceTree = "<group>"; };
 		9FC9997E217B16EF00D087FC /* VoiceRecordingProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecordingProtocols.swift; sourceTree = "<group>"; };
 		9FC99980217B184D00D087FC /* VoiceRecordingConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecordingConfigurator.swift; sourceTree = "<group>"; };
 		9FC99983217B189F00D087FC /* VoiceRecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceRecordingViewController.swift; sourceTree = "<group>"; };
@@ -74,9 +84,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B6BA7A22186FD5200534652 /* Azure */ = {
+			isa = PBXGroup;
+			children = (
+				7B6BA7AE2187069200534652 /* TTSVocalizer.swift */,
+				7B6BA7A92187031500534652 /* TTSSynthesizer.swift */,
+				7B6BA7A72186FEA200534652 /* TTSHttpRequest.swift */,
+				7B6BA7A52186FDFE00534652 /* TTSAuthentication.swift */,
+				7B6BA7A32186FD6B00534652 /* AzureService.swift */,
+			);
+			path = Azure;
+			sourceTree = "<group>";
+		};
 		9FC9997C217B166200D087FC /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				7B6BA7A22186FD5200534652 /* Azure */,
 				9FC9997D217B16D400D087FC /* VoiceRecording */,
 			);
 			path = Scenes;
@@ -262,9 +285,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FC9998E217B1A3300D087FC /* SpeechWorker.swift in Sources */,
+				7B6BA7A62186FDFF00534652 /* TTSAuthentication.swift in Sources */,
+				7B6BA7A42186FD6B00534652 /* AzureService.swift in Sources */,
 				9FD4607A217B0FE700C646DB /* ViewController.swift in Sources */,
 				9FD46078217B0FE700C646DB /* AppDelegate.swift in Sources */,
+				7B6BA7A82186FEA200534652 /* TTSHttpRequest.swift in Sources */,
 				9FC99981217B184D00D087FC /* VoiceRecordingConfigurator.swift in Sources */,
+				7B6BA7AF2187069200534652 /* TTSVocalizer.swift in Sources */,
+				7B6BA7AA2187031500534652 /* TTSSynthesizer.swift in Sources */,
 				9FC9998A217B193C00D087FC /* VoiceRecordingInteractor.swift in Sources */,
 				9FC9999B217B29BF00D087FC /* SpeechWorkerProtocols.swift in Sources */,
 				9FC9997F217B16EF00D087FC /* VoiceRecordingProtocols.swift in Sources */,
@@ -348,7 +376,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -403,7 +431,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

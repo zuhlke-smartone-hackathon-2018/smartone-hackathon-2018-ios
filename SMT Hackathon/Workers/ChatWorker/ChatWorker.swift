@@ -132,6 +132,7 @@ extension ChatWorker {
                     completion(nil)
                     return
             }
+            debugPrint("[conversation] stream url:", conversation.streamUrl)
             completion(conversation)
         }
         dataTask.resume()
@@ -183,6 +184,7 @@ extension ChatWorker {
                     completion(nil)
                     return
             }
+            debugPrint("[get message] watermark:\(response.watermark ?? "")")
             completion(response)
         }
         dataTask.resume()
@@ -193,6 +195,7 @@ extension ChatWorker {
 struct Conversation: Codable {
 
     let conversationId: String
+    let streamUrl: String
 
 }
 
@@ -241,6 +244,7 @@ struct Activity: Codable {
 struct ActivitySet: Codable {
 
     let activities: [Activity]
+    let watermark: String?
 
 }
 

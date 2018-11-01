@@ -8,10 +8,11 @@
 
 import Foundation
 import AVFoundation
+import SocketRocket
 
-private let BotServiceSecret = "UHk7Q_9H9cs.cwA.lVc.vYP20wKhApiaOAwCa15q4LQLYTx3aJSp458bXAg5Q-4" //"Gpj9YxxEclo.cwA.eP8.plEZ1adsvuMWkYfr8wsx1gNNVrSWaamc2ongP1Lzncg"
+private let BotServiceSecret = "UHk7Q_9H9cs.cwA.lVc.vYP20wKhApiaOAwCa15q4LQLYTx3aJSp458bXAg5Q-4"
 
-class ChatWorker: ChatWorkerProtocol {
+final class ChatWorker: NSObject, ChatWorkerProtocol {
 
     weak var delegate: ChatWorkerDelegate?
 
@@ -27,20 +28,30 @@ class ChatWorker: ChatWorkerProtocol {
                     completion(error as Error)
                     return
                 }
-                self.refreshMessage(completion: { _ in })
-                /*
-                DispatchQueue.main.async {
-                    self.createTimerIfNecessary()
-                }*/
-
                 completion(nil)
             })
         }
     }
 
+    deinit {
+        self.webSocket?.close()
+    }
+
     // MARK: Internal implementation
 
     private var conversationId: String?
+
+    private var streamUrl: String?
+
+    private lazy var webSocket: SRWebSocket? = {
+        guard let streamUrl = self.streamUrl,
+            let webSocketUrl = URL(string: streamUrl) else {
+                return nil
+        }
+        let _webSocket = SRWebSocket(url: webSocketUrl)
+        _webSocket!.delegate = self
+        return _webSocket
+    }()
 
     private let user = UUID().uuidString
 
@@ -48,10 +59,12 @@ class ChatWorker: ChatWorkerProtocol {
 
     private var othersMessages: [String] = [] {
         didSet {
-            guard oldValue != self.othersMessages else {
+            guard oldValue != self.othersMessages,
+                let lastMessage = self.othersMessages.last,
+                !lastMessage.isEmpty else {
                 return
             }            
-            let lastMessage = self.othersMessages.last ?? ""
+
             DispatchQueue.main.async {
                 self.delegate?.chatWorker(self, didReceiveMessage: lastMessage)
                 TTSVocalizer.sharedInstance.vocalize(lastMessage)
@@ -72,18 +85,13 @@ class ChatWorker: ChatWorkerProtocol {
             }
 
             self.conversationId = conversationId
-
-            self.refreshMessage(completion: { succeed in
-                guard succeed else {
-                    completion(false)
-                    return
-                }
-                completion(true)
-            })
-
+            self.streamUrl = conversation?.streamUrl
+            self.webSocket?.open()
+            completion(true)
         }
     }
 
+    @available(*, deprecated)
     private func refreshMessage(completion: @escaping (Bool) -> Void) {
         guard let conversationId = self.conversationId else {
             completion(false)
@@ -102,6 +110,7 @@ class ChatWorker: ChatWorkerProtocol {
         }
     }
 
+    @available(*, deprecated)
     private func createTimerIfNecessary() {
         guard self.getMessageTimer == nil else {
             return
@@ -149,9 +158,9 @@ extension ChatWorker {
         request.httpBody = try? JSONEncoder().encode(
             PostActivityRequest(type: "message", from: PostActivityRequest.From(id: self.user), text: message)
         )
-        NSLog("[postMessage Request]: \(String(data: request.httpBody!, encoding: .utf8)!)")
+        Logger.log(message: "\(String(data: request.httpBody!, encoding: .utf8)!)", event: .debug)
         let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
-            NSLog("[postMessage Response]: \(String(data: data!, encoding: .utf8)!)")
+            Logger.log(message: "Response \(String(data: data!, encoding: .utf8)!))", event: .debug)
             guard
                 let statusCode = (response as? HTTPURLResponse)?.statusCode,
                 statusCode / 100 == 2,
@@ -166,6 +175,7 @@ extension ChatWorker {
         dataTask.resume()
     }
 
+    @available(*, deprecated)
     func getMessages(conversationId: String, completion: @escaping (ActivitySet?) -> Void) {
         let urlText = "https://directline.botframework.com/v3/directline/conversations/\(conversationId)/activities"
         guard let url = URL(string: urlText) else {
@@ -184,12 +194,41 @@ extension ChatWorker {
                     completion(nil)
                     return
             }
-            debugPrint("[get message] watermark:\(response.watermark ?? "")")
             completion(response)
         }
         dataTask.resume()
     }
 
+}
+
+extension ChatWorker: SRWebSocketDelegate {
+    func webSocket(_ webSocket: SRWebSocket!, didReceiveMessage message: Any!) {
+        guard let data = message as? Data,
+            let activitySet = try? JSONDecoder().decode(ActivitySet.self, from: data) else {
+            return
+        }
+        self.othersMessages = activitySet.activities.sorted(by: { $0.id < $1.id }).filter { $0.from.id != self.user }.compactMap { $0.text }
+    }
+
+    func webSocket(_ webSocket: SRWebSocket!, didReceivePong pongPayload: Data!) {
+        Logger.log(message: "did receive pong", event: .debug)
+    }
+
+    func webSocket(_ webSocket: SRWebSocket!, didFailWithError error: Error!) {
+        Logger.log(message: "didFailWithError:\(error.localizedDescription)", event: .error)
+    }
+
+    func webSocket(_ webSocket: SRWebSocket!, didCloseWithCode code: Int, reason: String!, wasClean: Bool) {
+        Logger.log(message: "didCloseWithCode:\(code) reason:\(reason ?? "") wasClean:\(wasClean)", event: .debug)
+    }
+
+    func webSocketDidOpen(_ webSocket: SRWebSocket!) {
+        Logger.log(message: "webSocketDidOpen", event: .debug)
+    }
+
+    func webSocketShouldConvertTextFrame(toString webSocket: SRWebSocket!) -> Bool {
+        return false
+    }
 }
 
 struct Conversation: Codable {

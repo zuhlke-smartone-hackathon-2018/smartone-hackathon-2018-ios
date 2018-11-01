@@ -48,6 +48,7 @@ class VoiceRecordingViewController: UIViewController, VoiceRecordingViewProtocol
 
     @IBAction private func tapRecord() {
         self.interactor?.record()
+        // self.interactor?.testMessage()
     }
 
 }

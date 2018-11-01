@@ -26,19 +26,20 @@ class VoiceRecordingInteractor: VoiceRecordingInteractorProtocol {
         }
         self.presenter?.presentText(message)
         self.presenter?.presentBuildingText("Prcoessing...")
+        self.presenter?.presentIsRecording(false)
     }
 
     func record() {
         self.presenter?.presentIsRecording(true)
         self.speechWorker?.recognizeSpeech { (text: String?, error: SpeechRecognitionError?) in
             if let text = text {
+                self.presenter?.presentText(text)
+                self.presenter?.presentBuildingText("Prcoessing...")
                 self.chatWorker?.sendMessage(text) { chatError in
                     if let chatError = chatError {
                         self.presenter?.presentError(chatError.localizedDescription)
                     }
                 }
-                self.presenter?.presentText(text)
-                self.presenter?.presentBuildingText("Prcoessing...")
             } else if let errorMessage = error?.errorReason {
                 self.presenter?.presentError(errorMessage)
             }

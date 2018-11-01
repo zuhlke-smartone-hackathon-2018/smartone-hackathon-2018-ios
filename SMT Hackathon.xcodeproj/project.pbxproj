@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		09BD884B880F8883572271EB /* Pods_SMT_Hackathon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6912AC5F92D770451AD3C988 /* Pods_SMT_Hackathon.framework */; };
+		7B23B984218AAEC200477FA5 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B23B983218AAEC200477FA5 /* Logger.swift */; };
 		7B6BA7A42186FD6B00534652 /* AzureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6BA7A32186FD6B00534652 /* AzureService.swift */; };
 		7B6BA7A62186FDFF00534652 /* TTSAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6BA7A52186FDFE00534652 /* TTSAuthentication.swift */; };
 		7B6BA7A82186FEA200534652 /* TTSHttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6BA7A72186FEA200534652 /* TTSHttpRequest.swift */; };
@@ -50,6 +51,7 @@
 		201362BA803F42F487F6069A /* Pods-SMT Hackathon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMT Hackathon.release.xcconfig"; path = "Pods/Target Support Files/Pods-SMT Hackathon/Pods-SMT Hackathon.release.xcconfig"; sourceTree = "<group>"; };
 		6912AC5F92D770451AD3C988 /* Pods_SMT_Hackathon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SMT_Hackathon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70EFCFDC1865BF06C6719780 /* Pods-SMT Hackathon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMT Hackathon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SMT Hackathon/Pods-SMT Hackathon.debug.xcconfig"; sourceTree = "<group>"; };
+		7B23B983218AAEC200477FA5 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		7B6BA7A32186FD6B00534652 /* AzureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzureService.swift; sourceTree = "<group>"; };
 		7B6BA7A52186FDFE00534652 /* TTSAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSAuthentication.swift; sourceTree = "<group>"; };
 		7B6BA7A72186FEA200534652 /* TTSHttpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTSHttpRequest.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 		9FD46076217B0FE700C646DB /* SMT Hackathon */ = {
 			isa = PBXGroup;
 			children = (
+				7B23B983218AAEC200477FA5 /* Logger.swift */,
 				9FC99999217B1F7B00D087FC /* SMTHackathon-Bridging-Header.h */,
 				9FC9998B217B1A0E00D087FC /* Workers */,
 				9FC9997C217B166200D087FC /* Scenes */,
@@ -357,6 +360,7 @@
 				7B6BA7A82186FEA200534652 /* TTSHttpRequest.swift in Sources */,
 				9FC99981217B184D00D087FC /* VoiceRecordingConfigurator.swift in Sources */,
 				7B6BA7AF2187069200534652 /* TTSVocalizer.swift in Sources */,
+				7B23B984218AAEC200477FA5 /* Logger.swift in Sources */,
 				7B6BA7AA2187031500534652 /* TTSSynthesizer.swift in Sources */,
 				9FC9998A217B193C00D087FC /* VoiceRecordingInteractor.swift in Sources */,
 				9FC9999B217B29BF00D087FC /* SpeechWorkerProtocols.swift in Sources */,

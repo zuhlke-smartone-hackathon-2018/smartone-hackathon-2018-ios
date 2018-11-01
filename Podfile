@@ -6,5 +6,5 @@ target 'SMT Hackathon' do
   use_frameworks!
 
   # Pods for SMT Hackathon
-  pod 'SwiftWebSocket'
+  pod 'SocketRocket'
 end

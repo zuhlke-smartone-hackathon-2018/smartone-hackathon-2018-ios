@@ -32,6 +32,8 @@ protocol VoiceRecordingInteractorProtocol: class {
 
     func record()
 
+    func testMessage()
+
 }
 
 protocol VoiceRecordingPresenterProtocol: class {

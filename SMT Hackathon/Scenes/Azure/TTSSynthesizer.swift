@@ -66,7 +66,7 @@ final class TTSSynthesizer {
                     appId: String = "",
                     clientId: String = "",
                     lang: String = "en-US",
-                    gender: TTSGender = .female,
+                    gender: TTSGender = .male,
                     callback: @escaping (Data) -> ()) {        
         TTSAuthentication.sharedInstace.getAccessToken { (accessToken: String) in
             let message = "<speak version='1.0' xml:lang='\(lang)'><voice xml:lang='\(lang)' xml:gender='\(gender.rawValue)' name='\(gender.getVoiceName(forLacale: lang))'>\(text)</voice></speak>"
